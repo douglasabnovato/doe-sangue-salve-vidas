@@ -9,3 +9,8 @@ header, main, footer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
 }
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
