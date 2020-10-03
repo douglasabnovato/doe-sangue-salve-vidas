@@ -1,7 +1,6 @@
 /*
 * Global
 */
-
 * {
     box-sizing: border-box;
 }
@@ -18,11 +17,19 @@ body {
     background-color: #f9f9f9;
 }
 
+h1, h2 {
+    color: #000000cc;
+}
+
 /**
 * Títulos
 */
-header h1, main, h2 {
+header h1, main h2 {
     margin-bottom: 70px;
+}
+
+main h2 span{
+    color: #ff4f4f;
 }
 
 .form h2 {
@@ -75,7 +82,19 @@ form button {
     margin-bottom: 4px;
     padding: 8px 16px;
     border-radius: 4px;
-    border: 1px red solid;
+    border: 1px #ffffff88 solid;
+}
+
+form input {
+    background-color: transparent;
+}
+
+form input::placeholder {
+    color: #ffffffaa;
+}
+
+form button {
+    font-weight: bold;
 }
 
 /* Main */
