@@ -9,8 +9,9 @@
 - [x] 3.4. css global
 - [x] 3.5. css donors largura e altura
 - [x] 3.6. css form
-- [x] 3.7. css button
-- [ ] 3.8. css fonts: google fonts
-- [ ] 3.9. css cores 
+- [x] 3.7. css header button
+- [x] 3.8. css fonts: google fonts, tamanho
+- [x] 3.9. css cores 
+- [ ] 3.10. css cores do form
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
