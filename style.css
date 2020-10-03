@@ -19,6 +19,10 @@ header h1, main, h2 {
     margin-bottom: 70px;
 }
 
+.form h2 {
+    text-align: right;
+}
+
 /**
 * Estrutura 
 */
@@ -34,11 +38,18 @@ header, .form, main {
     max-width: 500px;    
 }
 
+/* header */
+header button {
+    padding: 8px 16px;
+    border-bottom: 4px;    
+}
+
 /* Form */
 section.form {
     /*limites dos elementos na página*/
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 45px;
 }
 
 form input,
@@ -59,4 +70,6 @@ main .donors {
 
 footer{
     margin-top: auto;
+    padding: 16px;
+    border: 1px solid #eee;
 }
