@@ -64,6 +64,11 @@ header button {
     font-weight: bold;    
 }
 
+.logo {
+    width: 150px;
+    margin-top: 70px;
+}
+
 /* Form */
 section.form {
     /*limites dos elementos na página*/
