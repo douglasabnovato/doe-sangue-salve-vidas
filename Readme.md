@@ -1,6 +1,6 @@
 ### Doe Sangue! Salve vidas!
 
-#### Puro Html, Css e Js
+#### Frontend 
 
 - [x] 1. Aplicação Doe Sangue! Salve vidas!
 - [x] 2. Estrutura HTML 
@@ -17,7 +17,21 @@
 - [x] 3.10. css cores do form e títulos
 - [x] 3.11. css img - logo 
 - [x] 3.12. css gota nos tipos de sangue 
-- [x] 4. Lógica da Aplicação - javascript
-- [x] 4.1. efeito no form e botão
+- [x] 4. Lógica da Aplicação - Javascript
+- [x] 4.1. js form
+- [x] 4.2. js button
+
+#### Backend
+
+- [x] 5. Servidor da aplicação
+- [x] 5.1. Regras de dados
+- [x] 5.2. Banco de Dados para armazenar dados
+- [x] 6. Tecnologias 
+- [x] 6.1. NodeJS - LTS v12.18.3
+- [x] 6.2. npm init -y
+- [x] 6.3. npm install express: criar servidor
+- [x] 6.3.1. pasta node_modules
+- [ ] 6.3.2. server.sj: configurar o servidor
+- [ ] 6.2. PostGree
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
