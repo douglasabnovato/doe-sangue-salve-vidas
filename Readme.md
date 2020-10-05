@@ -38,6 +38,7 @@
 - [x] 6.1.7. nunjucks: npm install nunjuncks: template engine
 - [x] 6.2. Dados
 - [x] 6.2.1. Estrutura de repetição com nunjucks
-- [ ] 6.2. DB PostGree
+- [x] 6.2.3. Pegar os dados do formulário
+- [ ] 6.3. DB PostGree
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
