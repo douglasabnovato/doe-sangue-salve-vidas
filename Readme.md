@@ -36,6 +36,8 @@
 - [x] 6.1.6. nodemon: npm install nodemon: automatiza o restart do servidor
 - [x] 6.1.6.1. warning: nodemon funcionou apenas com o yarn
 - [x] 6.1.7. nunjucks: npm install nunjuncks: template engine
+- [x] 6.2. Dados
+- [x] 6.2.1. Estrutura de repetição com nunjucks
 - [ ] 6.2. DB PostGree
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
