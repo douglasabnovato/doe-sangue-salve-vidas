@@ -1,6 +1,6 @@
 ### Doe Sangue! Salve vidas!
 
-#### Html, Css e Js puro
+#### Puro Html, Css e Js
 
 - [x] 1. Aplicação Doe Sangue! Salve vidas!
 - [x] 2. Estrutura HTML 
