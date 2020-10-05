@@ -39,6 +39,14 @@
 - [x] 6.2. Dados
 - [x] 6.2.1. Estrutura de repetição com nunjucks
 - [x] 6.2.3. Pegar os dados do formulário
-- [ ] 6.3. DB PostGree
+- [x] 6.3. Banco de Dados
+- [x] 6.3.1. Postgres 
+- [x] 6.3.1.1. Linguagem SQL
+- [x] 6.3.1.2. SGBDR
+- [x] 6.3.1.3. Open Source
+- [x] 6.3.2. Instalar Postgres - 1234560 
+- [x] 6.3.3. Postbird
+- [x] 6.3.3.1. Connections
+- [x] 6.3.3.2. criar db
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
