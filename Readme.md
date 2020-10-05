@@ -34,6 +34,7 @@
 - [x] 6.1.4. server.sj: configurar o servidor
 - [x] 6.1.5. node server.js: executar o servidor
 - [x] 6.1.6. nodemon: npm install nodemon: automatiza o restart do servidor
+- [x] 6.1.6.1. warning: nodemon funcionou apenas com o yarn
 - [x] 6.1.7. nunjucks: npm install nunjuncks: template engine
 - [ ] 6.2. DB PostGree
 
