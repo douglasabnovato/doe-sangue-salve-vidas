@@ -28,10 +28,11 @@
 - [x] 5.2. Banco de Dados para armazenar dados
 - [x] 6. Tecnologias 
 - [x] 6.1. NodeJS - LTS v12.18.3
-- [x] 6.2. npm init -y
-- [x] 6.3. npm install express: criar servidor
-- [x] 6.3.1. pasta node_modules
-- [ ] 6.3.2. server.sj: configurar o servidor
+- [x] 6.1.1. npm init -y
+- [x] 6.1.2. npm install express: criar servidor
+- [x] 6.1.3. pasta node_modules
+- [x] 6.1.4. server.sj: configurar o servidor
+- [x] 6.1.5. node server.js: executar o servidor
 - [ ] 6.2. PostGree
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
