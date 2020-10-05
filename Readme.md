@@ -47,6 +47,21 @@
 - [x] 6.3.2. Instalar Postgres - 1234560 
 - [x] 6.3.3. Postbird
 - [x] 6.3.3.1. Connections
-- [x] 6.3.3.2. criar db
+- [x] 6.3.3.2. criar db - doe
+- [x] 6.3.3.3. criar tabela - donors
+- [x] 6.3.3.4. criar colunas - name, email, blood com seus respectivos tipos
+- [x] 6.3.3.5. inserir registros
+- [x] 6.3.3.5.1. content/new row
+- [x] 6.3.3.5.2. new query
+````sql
+insert into "donors" ("name", "email", "blood")
+values ('Augusto Cury', 'augusto@cury.com.br', 'AB+');
+````
+- [x] 6.3.3.6. buscar dados
+````sql
+select *
+from "donors";
+````
+- [ ] 6.4. conectar a aplicação com o bd
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
