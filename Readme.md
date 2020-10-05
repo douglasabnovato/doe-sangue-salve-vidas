@@ -18,5 +18,6 @@
 - [x] 3.11. css img - logo 
 - [x] 3.12. css gota nos tipos de sangue 
 - [x] 4. Lógica da Aplicação - javascript
+- [x] 4.1. efeito no form e botão
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
