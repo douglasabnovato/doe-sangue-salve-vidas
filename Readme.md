@@ -33,6 +33,6 @@
 - [x] 6.1.3. pasta node_modules
 - [x] 6.1.4. server.sj: configurar o servidor
 - [x] 6.1.5. node server.js: executar o servidor
-- [ ] 6.2. PostGree
+- [ ] 6.2. DB PostGree
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
