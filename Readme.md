@@ -15,6 +15,8 @@
 - [x] 3.8. css fonts: google fonts, tamanho
 - [x] 3.9. css cores 
 - [x] 3.10. css cores do form e títulos
-- [x] 3.11. logo 
+- [x] 3.11. css img - logo 
+- [x] 3.12. css gota nos tipos de sangue 
+- [x] 4. Lógica da Aplicação - javascript
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
