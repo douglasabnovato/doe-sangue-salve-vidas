@@ -1,10 +1,10 @@
 {
-  "name": "doe-sangue",
+  "name": "maratona-dev-3.0",
   "version": "1.0.0",
-  "description": "- [x] 1. Aplicação Doe Sangue! Salve vidas!\r - [x] 2. Estrutura HTML \r - [x] 3. Estilização CSS\r - [x] 3.1. css donors\r - [x] 3.2. css donors alinhamentos\r - [x] 3.3. css donors espaçamentos\r - [x] 3.4. css global\r - [x] 3.5. css donors largura e altura\r - [x] 3.6. css form\r - [x] 3.7. css header button\r - [x] 3.8. css fonts: google fonts, tamanho\r - [x] 3.9. css cores \r - [x] 3.10. css cores do form e títulos\r - [x] 3.11. css img - logo \r - [x] 3.12. css gota nos tipos de sangue \r - [x] 4. Lógica da Aplicação - Javascript\r - [x] 4.1. js form\r - [x] 4.2. js button",
+  "description": "doe sangue! salve vidas!",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/douglasabnovato/doe-sangue-salve-vidas#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon":"^2.0.2",
+    "nunjucks":"^3.2.0"
   }
 }
