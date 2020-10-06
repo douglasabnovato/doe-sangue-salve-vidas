@@ -35,7 +35,7 @@
 - [x] 6.1.5. node server.js: executar o servidor
 - [x] 6.1.6. nodemon: npm install nodemon: automatiza o restart do servidor
 - [x] 6.1.6.1. warning: nodemon funcionou apenas com o yarn
-- [x] 6.1.7. nunjucks: npm install nunjuncks: template engine
+- [x] 6.1.7. nunjucks: npm install nunjucks: template engine
 - [x] 6.2. Dados
 - [x] 6.2.1. Estrutura de repetição com nunjucks
 - [x] 6.2.3. Pegar os dados do formulário
@@ -69,6 +69,7 @@ values ('Augusto Cury', 'augusto@cury.com.br', 'AB+');
 select *
 from "donors";
 ````
-- [x] 6.4. conectar a aplicação com o bd: `npm install pg`
+- [x] 6.4. conectar a aplicação ao bd: `npm install pg`
+- [x] 6.5. revisado estilização e db  
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
