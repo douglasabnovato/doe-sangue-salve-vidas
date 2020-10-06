@@ -46,6 +46,13 @@
 - [x] 6.3.1.3. Open Source
 - [x] 6.3.2. Instalar Postgres - 1234560 
 - [x] 6.3.3. Postbird
+````
+    user: 'postgres',
+    password: '1234560',
+    host: 'localhost',
+    port: 5432,
+    database: 'doe'
+````
 - [x] 6.3.3.1. Connections
 - [x] 6.3.3.2. criar db - doe
 - [x] 6.3.3.3. criar tabela - donors
@@ -62,6 +69,6 @@ values ('Augusto Cury', 'augusto@cury.com.br', 'AB+');
 select *
 from "donors";
 ````
-- [ ] 6.4. conectar a aplicação com o bd
+- [x] 6.4. conectar a aplicação com o bd: `npm install pg`
 
 Por [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
