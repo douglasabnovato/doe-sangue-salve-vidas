@@ -18,7 +18,6 @@
 - HTML/Javascript: estrutura e efeitos
 - CSS: posicionamento, dimensionamento e muito mais.
 - NodeJS para o backend, com Express
-- Link para o artigo da aplicação
 
 #### Código + Dependências
 
@@ -103,6 +102,7 @@ from "donors";
 
 #### Próximo passo na aplicação
 
+- Um artigo da aplicação
 - Desenvolver um módulo mobile
 
 #### Anotações   
