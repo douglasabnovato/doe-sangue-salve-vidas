@@ -22,11 +22,7 @@
 - Inserir no cadastro os doares com informações úteis
 - Visualizar a lista de doadores
  
-## 🎨 Layout
-
-Uma aplicação web responsiva desenvolvida em reactjs com material design lite do Google. 
-
-### Web - v1.0
+## 🎨 Layout - v1.0
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
   <img alt="SiteEstaticoReactJS" title="#SiteEstaticoReactJS" src="./assets/tela-da-aplicacao.jpg" width="400px">
