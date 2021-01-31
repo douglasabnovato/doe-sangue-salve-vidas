@@ -30,6 +30,7 @@ Uma aplicação web responsiva desenvolvida em reactjs com material design lite 
 
 <p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
   <img alt="SiteEstaticoReactJS" title="#SiteEstaticoReactJS" src="./assets/tela-da-aplicacao.jpg" width="400px">
+  <img alt="SiteEstaticoReactJS" title="#SiteEstaticoReactJS" src="./assets/tela-da-aplicacao-2.jpg" width="400px">
 </p> 
 
 ## 🛠 Tecnologias
