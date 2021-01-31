@@ -1,32 +1,49 @@
-<h3 align="center">
+<h1 align="center">
+    <img alt="DoeSangueSalveVidas" title="#DoeSangueSalveVidas" src="./assets/tela-da-aplicacao.jpg" />
+</h1>
+
+<h4 align="center"> 
   Doe Sangue! Salve vidas! 🚀
-</h3>
+</h4> 
 
----
-<br>
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/douglasabnovato/doe-sangue-salve-vidas?color=%2304D361">
+  <img alt="Repository size" src="https://img.shields.io/github/repo-size/douglasabnovato/doe-sangue-salve-vidas">
+  <a href="https://www.twitter.com/douglasabnovato/">
+    <img alt="Siga no Twitter" src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%douglasabnovato%2Fdoe-sangue-salve-vidas">
+  </a>
+</p>
 
-![Resultado da Aplicação](/public/tela-da-aplicacao.jpg)
+## 💻 Sobre o projeto
 
-### O que é a aplicação
+♻️ Doe Sangue! Salve vidas! 
 
 - Cadastrar pessoas para doação de sangue
 - Inserir no cadastro os doares com informações úteis
 - Visualizar a lista de doadores
+ 
+## 🎨 Layout
 
-#### Tecnologias/ Ferramentas/ Bibliotecas
+Uma aplicação web responsiva desenvolvida em reactjs com material design lite do Google. 
 
-- HTML/Javascript: estrutura e efeitos
-- CSS: posicionamento, dimensionamento e muito mais.
-- NodeJS para o backend, com Express
+### Web - v1.0
 
-#### Código + Dependências
+<p align="center" style="display: flex; align-items: flex-start; justify-content: center;">
+  <img alt="SiteEstaticoReactJS" title="#SiteEstaticoReactJS" src="./assets/tela-da-aplicacao.jpg" width="400px">
+</p> 
 
-- git clone "endereço do projeto"
-- npm install express
-- npm install nodemon
-- npm install nunjucks
-- npm install pg
-- Rodar a aplicação: `npm start`
+## 🛠 Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- [Css][css]: posicionamento, dimensionamento e muito mais
+- [Javascript][javascript]
+- [HTML][html]: estrutura e efeitos  
+- [Git][git]
+- [Github][github]  
+- [Node.js][nodejs]  
+
+## 🚀 Como executar o projeto
 
 #### Frontend 
 
@@ -100,16 +117,69 @@ from "donors";
 - [x] 6.4. conectar a aplicação ao bd: `npm install pg`
 - [x] 6.5. revisado estilização e db  
 
-#### Próximo passo na aplicação
+### Pré-requisitos
 
-- Um artigo da aplicação
-- Desenvolver um módulo mobile
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
+[Git](https://git-scm.com), [Node.js][nodejs]. 
+Além disto é bom ter um editor para trabalhar com o código como [VSCode][vscode]
 
-#### Anotações   
+### 🧭 Código + Dependências 
 
-- Fonte do projeto: [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito)
+- npm install express
+- npm install nodemon
+- npm install nunjucks
+- npm install pg 
 
----
-<br>
+### 🧭 Rodando a aplicação web (Front End)
 
-.: Por [Douglas A B Novato](https://linktr.ee/douglasabnovato)
+```bash 
+# Clone este repositório
+$ git clone https://github.com/douglasabnovato/doe-sangue-salve-vidas
+
+# Acesse a pasta do projeto no seu terminal/cmd
+$ cd doe-sangue-salve-vidas
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação em modo de desenvolvimento
+$ npm run start
+
+# A aplicação será aberta na porta:3000 - acesse http://localhost:3000
+
+```
+
+## 😯 Como contribuir para o projeto
+
+1. Faça um **fork** do projeto.
+2. Crie uma nova branch com as suas alterações: `git checkout -b my-feature`
+3. Salve as alterações e crie uma mensagem de commit contando o que você fez: `git commit -m "feature: My new feature"`
+4. Envie as suas alterações: `git push origin my-feature`
+> Caso tenha alguma dúvida confira este [guia de como contribuir no GitHub](https://github.com/firstcontributions/first-contributions)
+
+
+## 📝 Licença
+
+Este projeto esta sobe a licença MIT.
+
+Feito com ❤️ por Douglas A B Novato 👋🏽 [Entre em contato!](https://www.linkedin.com/in/douglasabnovato/)
+
+[git]: https://git-scm.com/doc
+[github]: https://docs.github.com/en
+[nodejs]: https://nodejs.org/
+[typescript]: https://www.typescriptlang.org/
+[expo]: https://expo.io/
+[reactjs]: https://reactjs.org
+[rn]: https://facebook.github.io/react-native/
+[yarn]: https://yarnpkg.com/
+[vscode]: https://code.visualstudio.com/
+[vceditconfig]: https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+[license]: https://opensource.org/licenses/MIT
+[vceslint]: https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+[prettier]: https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+[rs]: https://rocketseat.com.br 
+[css]: https://developer.mozilla.org/en-US/docs/Web/CSS 
+[html]: https://developer.mozilla.org/en-US/docs/Web/HTML
+[javascript]: https://developer.mozilla.org/en-US/docs/Web/JavaScript 
+
+Fonte do projeto: [Mayk Brito - Maratona Dev 3.0](https://github.com/maykbrito) 
