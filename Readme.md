@@ -114,6 +114,18 @@ from "donors";
 - [x] 6.4. conectar a aplicação ao bd: `npm install pg`
 - [x] 6.5. revisado estilização e db  
 
+---
+
+### Próximo passo para frontend
+
+- [ ] 1. responsividade
+- [ ] 2. acessibilidade
+- [ ] 3. modo dark / light
+- [ ] 4. variação de cores
+- [ ] 5. hospedar aplicação
+
+---
+
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
