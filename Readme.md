@@ -1,7 +1,3 @@
-<h1 align="center">
-    <img alt="DoeSangueSalveVidas" title="#DoeSangueSalveVidas" src="./assets/tela-da-aplicacao.jpg" />
-</h1>
-
 <h4 align="center"> 
   Doe Sangue! Salve vidas! 🚀
 </h4> 
@@ -14,7 +10,11 @@
   </a>
 </p>
 
-## 💻 Sobre o projeto
+<h1 align="center">
+    <img alt="DoeSangueSalveVidas" title="#DoeSangueSalveVidas" src="./assets/tela-da-aplicacao.jpg" />
+</h1>
+
+## 💻 Projeto
 
 ♻️ Doe Sangue! Salve vidas! 
 
