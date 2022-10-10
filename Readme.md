@@ -2,6 +2,10 @@
   Doe Sangue! Salve vidas! 🚀
 </h4> 
 
+<h1 align="center">
+    <img alt="DoeSangueSalveVidas" title="#DoeSangueSalveVidas" src="./assets/tela-da-aplicacao.jpg" />
+</h1>
+
 <p align="center">
   <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/douglasabnovato/doe-sangue-salve-vidas?color=%2304D361">
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/douglasabnovato/doe-sangue-salve-vidas">
@@ -9,10 +13,6 @@
     <img alt="Siga no Twitter" src="https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%douglasabnovato%2Fdoe-sangue-salve-vidas">
   </a>
 </p>
-
-<h1 align="center">
-    <img alt="DoeSangueSalveVidas" title="#DoeSangueSalveVidas" src="./assets/tela-da-aplicacao.jpg" />
-</h1>
 
 ## 💻 Projeto
 
