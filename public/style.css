@@ -25,11 +25,12 @@ h1, h2 {
 * Títulos
 */
 header h1, main h2 {
+    font-size: 1.5em;
     margin-bottom: 70px;
 }
 
 main h2 span{
-    color: #ff4f4f;
+    color: #c62828;
 }
 
 .form h2 {
@@ -58,7 +59,7 @@ header button {
     margin-top: 16px;
     padding: 8px 16px;
     border-bottom: 4px;
-    background-color: #ff4f4f;
+    background-color: #c62828;
     border: none;
     color: white;
     font-weight: bold;    
@@ -80,7 +81,7 @@ section.form {
     grid-template-columns: 1fr 1fr;
     grid-gap: 45px;
     align-items: center;
-    background-color: #ff4f4f;
+    background-color: #c62828;
     padding: 16px 14px;
     border-radius: 6px;
 }
@@ -113,7 +114,7 @@ main .donors {
 }
 
 .blood {
-    color: #ff4f4f;
+    color: #c62828;
     font-weight: bold; 
     font-size: 12px;   
     display: flex;
@@ -124,7 +125,7 @@ main .donors {
 
 .blood::before{
     content: "";
-    background-color: #ff4f4f11;
+    background-color: #c6282814;
     width: 40px;
     height: 40px;
     position: absolute;
@@ -158,3 +159,30 @@ section.form.hide {
     height: 0;
     margin-top: -70px;
 }
+/* Acessibilidade e estados (ciclo MVP) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+a{color:#b71c1c}
+button{cursor:pointer;font-family:inherit}
+:focus-visible{outline:3px solid #0d47a1;outline-offset:2px}
+section.form{grid-template-columns:1fr}
+.form h2{text-align:left;color:#fff}
+.field label{display:block;color:#fff;font-weight:700;margin-bottom:4px}
+form input,form select{background:#fff;color:#1a1a1a;border:1px solid #fff;width:100%;padding:8px 12px;border-radius:4px;font:inherit}
+form input::placeholder{color:#666}
+.consent{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start}
+.consent input{width:auto;margin-top:4px}
+.consent label{font-weight:400}
+.consent .field-error{grid-column:1/-1}
+form button{background:#fff;color:#b71c1c;border:0}
+.field-error{min-height:1em;margin:2px 0 8px;color:#fff;font-weight:700;font-size:14px}
+[aria-invalid="true"]{outline:3px solid #ffd54f}
+.form-alert{background:#fff;color:#b71c1c;padding:8px;border-radius:4px;font-weight:700}
+.privacy{color:#fff;font-size:13px}
+.flash{max-width:500px;margin:0 auto 24px;background:#e8f5e9;color:#1b5e20;padding:12px;border-radius:6px;text-align:center}
+ul.donors{list-style:none;padding:0;margin:0}
+.by-blood{margin:0 auto 48px;border-collapse:collapse}
+.by-blood th,.by-blood td{padding:6px 16px;border-bottom:1px solid #ddd}
+.empty{color:#444}
+.error-page{text-align:center;padding:64px 16px}
+section.form[hidden]{display:none}
+@media (max-width:520px){main .donors{grid-template-columns:1fr 1fr}}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Entre na lista de doadores de sangue e ajude a salvar vidas.">
+        <title>Doe sangue! Salve vidas!</title>
+        <link rel="icon" href="/logo.png">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/style.css">
+    </head>
+    <body>
+        <header>
+            <img class="logo" src="/logo.png" alt="Doe sangue" width="120" height="120">
+            <h1>A sua doação importa</h1>
+            <p>Uma doação pode salvar até 4 vidas.</p>
+            <p>Apenas 1,4% da população brasileira doa sangue regularmente (Ministério da Saúde, 2022).</p>
+            <button type="button" id="toggle-form" aria-expanded="{{ 'true' if openForm else 'false' }}" aria-controls="cadastro">Quero ajudar</button>
+        </header>
+
+        {% if status == "ok" %}
+            <p class="flash" role="status">Cadastro feito. Obrigado! O hemocentro da sua região pode entrar em contato pelo e-mail informado.</p>
+        {% elif status == "existente" %}
+            <p class="flash" role="status">Este e-mail já está na lista de doadores. Obrigado por participar!</p>
+        {% endif %}
+
+        <section class="form {{ '' if openForm else 'hide' }}" id="cadastro" aria-labelledby="titulo-cadastro" {{ '' if openForm else 'hidden' }}>
+            <h2 id="titulo-cadastro">Entre na lista de doadores</h2>
+            {% if errors %}<p class="form-alert" role="alert">Revise os campos destacados.</p>{% endif %}
+            <form action="/" method="POST" novalidate data-donor-form>
+                <div class="field">
+                    <label for="name">Nome completo</label>
+                    <input id="name" name="name" type="text" autocomplete="name" maxlength="80" required value="{{ form.name if form }}" aria-describedby="erro-name" {% if errors.name %}aria-invalid="true"{% endif %}>
+                    <p class="field-error" id="erro-name">{{ errors.name if errors }}</p>
+                </div>
+                <div class="field">
+                    <label for="email">E-mail</label>
+                    <input id="email" name="email" type="email" autocomplete="email" maxlength="120" required value="{{ form.email if form }}" aria-describedby="erro-email" {% if errors.email %}aria-invalid="true"{% endif %}>
+                    <p class="field-error" id="erro-email">{{ errors.email if errors }}</p>
+                </div>
+                <div class="field">
+                    <label for="blood">Tipo sanguíneo</label>
+                    <select id="blood" name="blood" required aria-describedby="erro-blood" {% if errors.blood %}aria-invalid="true"{% endif %}>
+                        <option value="">Selecione</option>
+                        {% for type in bloodTypes %}
+                            <option value="{{ type }}" {% if form and form.blood == type %}selected{% endif %}>{{ type }}</option>
+                        {% endfor %}
+                    </select>
+                    <p class="field-error" id="erro-blood">{{ errors.blood if errors }}</p>
+                </div>
+                <div class="field consent">
+                    <input id="consent" name="consent" type="checkbox" required aria-describedby="erro-consent privacidade" {% if form and form.consent %}checked{% endif %} {% if errors.consent %}aria-invalid="true"{% endif %}>
+                    <label for="consent">Autorizo o uso do meu nome, e-mail e tipo sanguíneo para contato sobre doação de sangue. Na lista pública aparecem apenas meu primeiro nome, a inicial do sobrenome e o tipo sanguíneo.</label>
+                    <p class="field-error" id="erro-consent">{{ errors.consent if errors }}</p>
+                </div>
+                <button type="submit">Quero ajudar</button>
+            </form>
+            <p class="privacy" id="privacidade">Seus dados não são compartilhados. Para removê-los, escreva para o responsável pelo projeto (veja o rodapé).</p>
+        </section>
+
+        <main id="doadores">
+            <h2>Últimos <span>doadores</span></h2>
+            {% if latest.length == 0 %}
+                <p class="empty">Ainda não há doadores na lista. Seja a primeira pessoa!</p>
+            {% else %}
+                <ul class="donors">
+                    {% for donor in latest %}
+                        <li class="donor">
+                            <span class="blood" aria-label="Tipo sanguíneo {{ donor.blood }}">{{ donor.blood }}</span>
+                            <p>{{ donor.name }}</p>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if byBlood.length %}
+                <h2>Doadores por <span>tipo</span></h2>
+                <table class="by-blood">
+                    <caption class="sr-only">Quantidade de doadores por tipo sanguíneo</caption>
+                    <thead><tr><th scope="col">Tipo</th><th scope="col">Doadores</th></tr></thead>
+                    <tbody>
+                        {% for row in byBlood %}<tr><td>{{ row.blood }}</td><td>{{ row.total }}</td></tr>{% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </main>
+
+        <footer>
+            Com ❤️ <a href="https://github.com/douglasabnovato" target="_blank" rel="noopener noreferrer">@douglasabnovato</a>
+        </footer>
+        <script src="/script.js"></script>
+    </body>
+</html>

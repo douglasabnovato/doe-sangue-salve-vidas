@@ -1,26 +1,30 @@
 {
-  "name": "maratona-dev-3.0",
-  "version": "1.0.0",
-  "description": "doe sangue! salve vidas!",
-  "main": "script.js",
+  "name": "doe-sangue-salve-vidas",
+  "version": "2.0.0",
+  "description": "Lista de doadores de sangue com cadastro consentido (LGPD).",
+  "main": "src/server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/douglasabnovato/doe-sangue-salve-vidas.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/douglasabnovato/doe-sangue-salve-vidas/issues"
-  },
-  "homepage": "https://github.com/douglasabnovato/doe-sangue-salve-vidas#readme",
+  "author": "douglasabnovato",
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.17.1",
-    "nodemon": "^2.0.4",
-    "nunjucks": "^3.2.2",
-    "pg": "^8.4.2"
+    "express": "^4.21.2",
+    "express-rate-limit": "^7.5.0",
+    "helmet": "^8.1.0",
+    "nunjucks": "^3.2.4",
+    "pg": "^8.16.0"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.0"
   }
 }

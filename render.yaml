@@ -1,0 +1,19 @@
+# Blueprint do Render (plano gratuito). DATABASE_URL vem do Neon (gratuito) e é informada no painel.
+services:
+  - type: web
+    name: doe-sangue-salve-vidas
+    runtime: node
+    plan: free
+    buildCommand: npm ci --omit=dev
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeployTrigger: commit
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_SSL
+        value: "1"
+      - key: TRUST_PROXY
+        value: "1"
+      - key: NODE_VERSION
+        value: "22"
