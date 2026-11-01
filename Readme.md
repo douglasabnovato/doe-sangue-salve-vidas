@@ -1,4 +1,4 @@
-> **Projeto de estudo.** Estado conferido em 30/10/2026: 1 endereço(s) citado(s) abaixo não responde(m). Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
+> **Projeto de estudo.** Estado conferido em 31/10/2026: os endereços que seguem fora do ar foram retirados deste README. Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
 
 <h1 align="center">Doe Sangue! Salve Vidas!</h1>
 
@@ -33,10 +33,10 @@ npm run dev               # cria/atualiza a tabela e sobe em http://localhost:30
 TEST_DATABASE_URL=postgres://postgres@localhost:5432/postgres npm test
 ```
 
-## Em produção
+## Publicação
 
-- URL: https://doe-sangue-salve-vidas.onrender.com
-- Hospedagem gratuita: Render (Web Service) + PostgreSQL no Neon, publicada a cada push na `master` pelo `render.yaml`.
+- Fora do ar desde a conferência de 31/10/2026; para ver o projeto, rode localmente (seção "Como rodar").
+- Hospedagem prevista: Render (Web Service) + PostgreSQL no Neon, publicada a cada push na `master` pelo `render.yaml`.
 - Passo a passo completo (Neon, Render, CI e conferência): [docs/DEPLOY.md](docs/DEPLOY.md).
 
 ## Documentação
