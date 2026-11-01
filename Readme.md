@@ -6,6 +6,15 @@
 
 <p align="center"><img alt="Tela da aplicação" src="./assets/tela-da-aplicacao.jpg" width="400"></p>
 
+## 🧠 O que aprendi
+
+> Proposta de 01/11/2026, escrita a partir do código e das dependências. Ajuste com a sua experiência.
+
+- Renderizar páginas no servidor com Express e Nunjucks.
+- Persistir dados em PostgreSQL com `pg`.
+- Limitar envios com `express-rate-limit`.
+- Testar a aplicação com `node --test`.
+
 ## Problema e proposta
 
 Apenas 1,4% da população brasileira doa sangue regularmente (Ministério da Saúde, 2022). A página convida a pessoa a entrar numa lista de doadores e mostra quantos doadores existem por tipo sanguíneo.
