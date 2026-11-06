@@ -2,7 +2,7 @@
 
 > Criado em 02/11/2026. Meta: N1 (estudo). Testado no Windows, com Node 24, na cópia de `master`. Não houve teste com pessoas nem em aparelho real.
 
-## 1. Critérios: 7 de 12 atendidos
+## 1. Critérios: 7 de 12 atendidos em 02/11/2026 (veja a revisão de 06/11/2026 no fim)
 
 | # | Critério | Como verificar | Situação |
 |---|---|---|---|
@@ -30,3 +30,17 @@ Agenda de doação e contas.
 ## 4. Neste ciclo
 
 Atualiza dependências com alerta.
+
+## Revisão de 06/11/2026 (ciclo de 03/11/2026)
+
+**Nível:** Estudo (N1). Os critérios 5 e 7 passam a "Não se aplica (N1)" e saem da conta. **Resumo:** 9 de 10 aplicáveis atendidos (1, 2, 3, 4, 6, 8, 9, 11 e 12) e 1 parcial (10, que depende do responsável). **Finalizado:** sim, pela decisão 4 do processo: o único critério que falta depende do responsável e tem issue aberta com `depende-do-responsavel` (#14).
+
+| # | Situação em 06/11/2026 | Evidência ou o que falta | Issue |
+|---|---|---|---|
+| 3 | Atende | Cadastro feito no navegador com `npm run demo` (memória): a pessoa aparece como "Teclado T." na lista. A gravação no PostgreSQL é testada no CI com PostgreSQL 16 | #10 (ver com o banco real) |
+| 5 | Não se aplica (N1) | Projeto de estudo | — |
+| 6 | Atende | Página de erro 503 testada sempre (sem banco); 422 com mensagem quando falta consentimento; lista vazia com texto próprio | — |
+| 7 | Não se aplica (N1) | Sem publicação (Render 404) | #16 |
+| 8 | Atende | Lighthouse 12.8.2, acessibilidade 100 em `localhost`; Tab passa por 7 elementos, todos com nome e foco visível; cadastro concluído só com Tab, Enter e Espaço; 375 px sem rolagem horizontal | — |
+| 10 | Parcial | CI verde nos PRs, mas a `master` não é protegida (decisão 3). Antes estava "Atende" | #14 |
+| 11 | Atende | Os 4 testes de integração eram pulados no CI (sem `TEST_DATABASE_URL`); agora rodam com o serviço PostgreSQL do workflow | — |
