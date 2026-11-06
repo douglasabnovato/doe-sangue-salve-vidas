@@ -7,6 +7,7 @@ const { migrate } = require("../src/db/migrate");
 const { createDonorRepository } = require("../src/donorRepository");
 const { createApp } = require("../src/app");
 const { validateDonor, publicName } = require("../src/lib/donorValidation");
+const { createMemoryDonorRepository } = require("../src/memoryDonorRepository");
 
 const url = process.env.TEST_DATABASE_URL;
 let pool;
@@ -21,6 +22,34 @@ test("validação exige tipo ABO/Rh, e-mail e consentimento", () => {
 test("nome público mostra só primeiro nome e inicial", () => {
   assert.equal(publicName("Maria da Silva Santos"), "Maria S.");
   assert.equal(publicName("Pedro"), "Pedro");
+});
+
+test("banco indisponível responde 503 com página amigável", async () => {
+  const broken = createApp({ donors: { latest: async () => { throw new Error("down"); }, countByBlood: async () => [] } });
+  const res = await request(broken).get("/").expect(503);
+  assert.match(res.text, /indisponível/);
+});
+
+test("modo demonstração (memória): lista vazia, cadastro, nome minimizado e sem duplicar e-mail", async () => {
+  const demo = createApp({ donors: createMemoryDonorRepository() });
+  assert.match((await request(demo).get("/").expect(200)).text, /Ainda não há doadores/);
+  const body = { name: "Joana Pereira Lima", email: "Joana@Ex.com", blood: "O-", consent: "on" };
+  assert.equal((await request(demo).post("/").type("form").send(body).expect(303)).headers.location, "/?status=ok#doadores");
+  const again = await request(demo).post("/").type("form").send({ ...body, email: "JOANA@EX.COM" }).expect(303);
+  assert.equal(again.headers.location, "/?status=existente#doadores");
+  const page = await request(demo).get("/?status=ok").expect(200);
+  assert.match(page.text, /Joana L\./);
+  assert.doesNotMatch(page.text, /Pereira|joana@ex\.com/);
+  assert.equal((await request(demo).get("/health").expect(200)).body.donors, 1);
+});
+
+test("repositório em memória ordena do mais novo e agrupa por tipo", async () => {
+  const repo = createMemoryDonorRepository();
+  await repo.create({ name: "Ana Souza", email: "a@x.com", blood: "O+" });
+  await repo.create({ name: "Bruno Lima", email: "b@x.com", blood: "A-" });
+  await repo.create({ name: "Caio Reis", email: "c@x.com", blood: "O+" });
+  assert.deepEqual((await repo.latest(2)).map((d) => d.name), ["Caio R.", "Bruno L."]);
+  assert.deepEqual(await repo.countByBlood(), [{ blood: "A-", total: 1 }, { blood: "O+", total: 2 }]);
 });
 
 describeDb();
@@ -73,10 +102,5 @@ function describeDb() {
     assert.equal(health.body.donors, 0);
   });
 
-  test("banco indisponível responde 503 com página amigável", opts, async () => {
-    const broken = createApp({ donors: { latest: async () => { throw new Error("down"); }, countByBlood: async () => [] } });
-    const res = await request(broken).get("/").expect(503);
-    assert.match(res.text, /indisponível/);
-  });
 }
 /* Fim de app.test.js */

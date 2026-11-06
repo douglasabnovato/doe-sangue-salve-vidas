@@ -4,5 +4,6 @@ module.exports = {
   databaseUrl: process.env.DATABASE_URL || "postgres://postgres@localhost:5432/doe",
   databaseSsl: process.env.DATABASE_SSL === "1",
   trustProxy: process.env.TRUST_PROXY === "1",
+  memory: process.argv.includes("--memoria"),
 };
 /* Fim de config.js */
