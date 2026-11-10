@@ -8,13 +8,15 @@
 
 ## Estado e próximos passos (ciclo de 03/11/2026)
 
+**Estado em 10/11/2026:** Estudo (N1), 10 de 10 critérios aplicáveis atendidos; **Finalizado: sim**. A `master` está protegida desde 10/11/2026 (ruleset `principal-protegida`). Detalhes em [`docs/MVP.md`](docs/MVP.md).
+
 **Sem link publicado:** `https://doe-sangue-salve-vidas.onrender.com` respondeu 404 em 06/11/2026; o serviço não existe (#16). Para ver a tela sem banco, rode `npm run demo`.
 
 **O que foi feito**
 - Modo demonstração em memória (`npm run demo`), sem PostgreSQL, com testes (PR deste ciclo para a `developer/sprint-2026-11-12`).
 - O CI roda de fato os testes de integração, com PostgreSQL 16; antes eles eram pulados.
 - O cadastro foi feito no navegador só com teclado, com Lighthouse de acessibilidade 100.
-- O [`docs/MVP.md`](docs/MVP.md) segue a régua N1 e está "Finalizado: sim"; falta só proteger a `master` (#14).
+- O [`docs/MVP.md`](docs/MVP.md) segue a régua N1 e está "Finalizado: sim"; a proteção da `master` (#14) foi criada em 10/11/2026.
 - Antes: licença MIT (#5) e o que aprendi (#4).
 
 **O que queremos fazer**
@@ -22,7 +24,7 @@
 - #11 Oferecer `docker-compose.yml` com o PostgreSQL.
 - #12 Permitir que a pessoa saia da lista.
 - #13 Mostrar quem pode doar, com fonte oficial.
-- #14 Proteger a `master` com PR e CI obrigatórios (responsável).
+- #14 Proteger a `master`: feito em 10/11/2026; a issue fecha no merge da `master`.
 - #15 Remover o servidor e a página antigos da raiz.
 - #16 Decidir a publicação no Render (responsável).
 
