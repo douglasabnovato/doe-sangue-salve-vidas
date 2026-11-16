@@ -19,6 +19,17 @@
             <button type="button" id="toggle-form" aria-expanded="{{ 'true' if openForm else 'false' }}" aria-controls="cadastro">Quero ajudar</button>
         </header>
 
+        <section class="requisitos" id="quem-pode-doar" aria-labelledby="titulo-requisitos">
+            <h2 id="titulo-requisitos">Quem pode doar</h2>
+            <ul>
+                <li>Ter de 16 a 69 anos. Quem tem menos de 18 anos precisa da autorização do responsável legal.</li>
+                <li>Pesar pelo menos 50 kg.</li>
+                <li>Levar um documento oficial com foto.</li>
+                <li>Estar alimentado e ter dormido pelo menos 6 horas nas últimas 24 horas.</li>
+            </ul>
+            <p class="fonte">Fonte: <a href="https://www.gov.br/saude/pt-br/composicao/saes/sangue" target="_blank" rel="noopener noreferrer">Ministério da Saúde, critérios básicos para doação</a>, consultada em 16/11/2026. As regras mudam por portaria: confirme no hemocentro antes de ir.</p>
+        </section>
+
         {% if status == "ok" %}
             <p class="flash" role="status">Cadastro feito. Obrigado! O hemocentro da sua região pode entrar em contato pelo e-mail informado.</p>
         {% elif status == "existente" %}

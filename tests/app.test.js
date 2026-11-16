@@ -52,6 +52,15 @@ test("repositório em memória ordena do mais novo e agrupa por tipo", async () 
   assert.deepEqual(await repo.countByBlood(), [{ blood: "A-", total: 1 }, { blood: "O+", total: 2 }]);
 });
 
+test("página inicial mostra quem pode doar, com a fonte oficial", async () => {
+  const demo = createApp({ donors: createMemoryDonorRepository() });
+  const page = (await request(demo).get("/").expect(200)).text;
+  assert.match(page, /<h2 id="titulo-requisitos">Quem pode doar<\/h2>/);
+  assert.match(page, /16 a 69 anos/);
+  assert.match(page, /50 kg/);
+  assert.match(page, /href="https:\/\/www\.gov\.br\/saude\/[^"]+"/);
+});
+
 test("excesso de envios responde 429 com página em português", async () => {
   const demo = createApp({ donors: createMemoryDonorRepository() });
   const body = { name: "Pessoa Teste", email: "pessoa@empresa.test", blood: "A+" };

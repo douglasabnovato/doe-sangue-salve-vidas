@@ -186,3 +186,7 @@ ul.donors{list-style:none;padding:0;margin:0}
 .error-page{text-align:center;padding:64px 16px}
 section.form[hidden]{display:none}
 @media (max-width:520px){main .donors{grid-template-columns:1fr 1fr}}
+.requisitos{margin:0 auto 30px;width:90%;max-width:500px}
+.requisitos h2{text-align:center;font-size:1.5em}
+.requisitos ul{padding-left:20px;line-height:1.5}
+.requisitos .fonte{font-size:13px;color:#444}
