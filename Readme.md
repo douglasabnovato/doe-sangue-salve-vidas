@@ -8,7 +8,7 @@
 
 ## Estado e próximos passos (ciclo de 16/11/2026)
 
-**Estado em 16/11/2026:** Estudo (N1), 9 de 10 critérios aplicáveis atendidos; **Finalizado: sim**. O que falta (critério 9) depende do responsável (#22 e #24). Detalhes em [`docs/MVP.md`](docs/MVP.md).
+**Estado em 16/11/2026:** Estudo (N1), 9 de 10 critérios aplicáveis atendidos; **Finalizado: sim**. O que falta (critério 9) depende do responsável: a decisão sobre os dados no histórico (#22). Os alertas do Dependabot estão ligados, com 0 abertos em 16/11/2026. Detalhes em [`docs/MVP.md`](docs/MVP.md).
 
 **Sem link publicado:** `https://doe-sangue-salve-vidas.onrender.com` respondeu 404 em 16/11/2026; o serviço não existe (#16). Para ver a tela sem banco, rode `npm run demo`.
 
@@ -21,7 +21,7 @@
 **O que queremos fazer**
 - #22 Decidir sobre os dados pessoais no histórico do Git (responsável).
 - #23 Exigir o job `e2e` no ruleset da `master` (responsável).
-- #24 Ligar os alertas do Dependabot (responsável).
+- #24 Alertas do Dependabot: ligados em 16/11/2026, com 0 abertos; a evidência está na issue, e fechá-la é do responsável.
 - #16 Decidir a publicação no Render (responsável; passo a passo em [`docs/DEPLOY.md`](docs/DEPLOY.md)).
 - #10 Ver o cadastro com PostgreSQL no computador local (responsável).
 - #11 Oferecer `docker-compose.yml` com o PostgreSQL.
