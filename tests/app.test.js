@@ -52,6 +52,15 @@ test("repositório em memória ordena do mais novo e agrupa por tipo", async () 
   assert.deepEqual(await repo.countByBlood(), [{ blood: "A-", total: 1 }, { blood: "O+", total: 2 }]);
 });
 
+test("excesso de envios responde 429 com página em português", async () => {
+  const demo = createApp({ donors: createMemoryDonorRepository() });
+  const body = { name: "Pessoa Teste", email: "pessoa@empresa.test", blood: "A+" };
+  for (let i = 0; i < 5; i += 1) await request(demo).post("/").type("form").send(body).expect(422);
+  const res = await request(demo).post("/").type("form").send(body).expect(429);
+  assert.match(res.text, /muitos cadastros em pouco tempo/);
+  assert.doesNotMatch(res.text, /Too many requests/i);
+});
+
 describeDb();
 
 /* Registra os testes que dependem do banco */
