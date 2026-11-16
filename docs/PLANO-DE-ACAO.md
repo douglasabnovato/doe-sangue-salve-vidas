@@ -74,3 +74,68 @@ Timebox: 45 min (ciclo completo).
 4. `MVP.md` pela régua N1; README com estado e próximos passos.
 
 **Vira issue.** #10, #14, #16 (responsável); #11, #12, #13, #15 (agente).
+
+## Ciclo de 16/11/2026
+
+> Branch `feature/2026-11-16` → `developer/sprint-2026-11-12` (o PR #20 para a `master` segue aberto) → `master`. Nível: Estudo (N1); critérios 5 e 7 não se aplicam.
+
+### Produto
+
+**Problema e público.** Pessoas dispostas a doar sangue entram, com consentimento, numa lista que mostra só o primeiro nome, a inicial e o tipo sanguíneo. É um estudo de Node com PostgreSQL.
+
+**Hipótese e meta.** Acreditamos que uma página única com consentimento claro faz a pessoa entrar na lista em menos de 1 minuto. Saberemos quando o teste de ponta a ponta no navegador concluir o cadastro só com teclado e o nome minimizado aparecer na lista, no CI, com PostgreSQL real.
+
+**O que a análise achou.**
+- O `docs/MVP.md` marcava os critérios 3 e 8 como "Atende" com um teste manual de 06/11/2026. A régua pede Playwright no CI e axe dentro dele. Os dois passam a "Parcial" até o teste existir.
+- O critério 9 citava um `npm audit` de 02/11/2026. Os alertas do Dependabot estão desligados (API 403), então o `npm audit --omit=dev` é a única fonte e precisa rodar no CI.
+- A captura de tela do README (`assets/tela-da-aplicacao.jpg`) mostra nomes completos com tipo sanguíneo, que é dado de saúde. Ela sai da árvore neste ciclo; o histórico é decisão do responsável.
+- O histórico também guarda um exemplo de `INSERT` com nome e e-mail de terceiro no README antigo (removido em 28/09/2026) e a senha local antiga do PostgreSQL no `server.js` da raiz.
+- O limite de envios (5 por minuto) responde com texto em inglês, sem página própria. É uma falha sem tratamento.
+- O `ci/github-actions-ci.yml` não é lido pelo GitHub, mas tem o passo de `npm audit` que o workflow ativo não tem.
+
+**O que a pesquisa trouxe.**
+
+| Ideia | O que levamos para o projeto | Fonte |
+|---|---|---|
+| Requisitos básicos do Ministério da Saúde: 16 a 69 anos (menores com autorização), pelo menos 50 kg, documento com foto, estar alimentado e descansado | Seção "Quem pode doar" na página, com link para a fonte e data da consulta (#13). Não citamos intervalo entre doações: a página oficial não traz e a portaria de 2026 mudou prazos | [Ministério da Saúde: doação de sangue](https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/doacao-de-sangue), consultada em 16/11/2026 |
+| O Playwright recomenda o `@axe-core/playwright` para achar problemas de acessibilidade dentro do teste de ponta a ponta | Teste `e2e` com axe na página inicial, no formulário aberto, com erros e depois do cadastro | [Playwright: accessibility testing](https://playwright.dev/docs/accessibility-testing) |
+| O `express-rate-limit` aceita um `handler` próprio para a resposta 429 | Página de erro em português para o limite de envios, com teste | [express-rate-limit: handler](https://express-rate-limit.mintlify.app/reference/configuration#handler) |
+
+**Backlog priorizado (impacto × esforço).**
+
+| Prioridade | Item | Impacto | Esforço | Destino |
+|---|---|---|---|---|
+| 1 | Tirar da árvore a captura com nomes e tipos sanguíneos | Alto | Baixo | Este ciclo |
+| 2 | `npm audit --omit=dev` no CI e patch do `pg` | Alto | Baixo | Este ciclo |
+| 3 | Teste Playwright do cadastro com axe, no CI, com PostgreSQL real | Alto | Médio | Este ciclo |
+| 4 | Página própria para o limite de envios (429) | Médio | Baixo | Este ciclo |
+| 5 | Remover o servidor, a página e o CI antigos da raiz (#15) | Médio | Baixo | Este ciclo |
+| 6 | "Quem pode doar", com fonte oficial (#13) | Médio | Baixo | Este ciclo |
+| 7 | Exigir o job `e2e` no ruleset da `master` | Alto | Baixo | Responsável (issue nova) |
+| 8 | Decidir sobre o histórico com dados pessoais | Alto | Médio | Responsável (issue nova) |
+| 9 | Ligar os alertas do Dependabot | Médio | Baixo | Responsável (issue nova) |
+| 10 | Express 5 e `express-rate-limit` 8 | Médio | Médio | Issue nova |
+| 11 | Sair da lista sem ajuda (#12), `docker-compose` (#11), publicação (#16) | Médio | Médio | Issues existentes |
+
+**Fora do escopo.** Agenda de doação, contas, lembrete de próxima doação, troca de versão maior de dependências.
+
+### Engenharia
+
+**Arquitetura.** Express com Nunjucks (`src/app.js`), repositório injetado (PostgreSQL em `src/donorRepository.js`, memória em `src/memoryDonorRepository.js`) e migrations idempotentes. O teste novo sobe o servidor de verdade pelo `webServer` do Playwright: com `E2E_DATABASE_URL`, usa o PostgreSQL; sem ela, o modo demonstração.
+
+**Riscos.**
+- O limite de 5 envios por minuto vale também no teste de ponta a ponta: o teste faz no máximo 2 envios.
+- Sem `required_status_checks` para o `e2e`, o ruleset deixa mesclar com esse job vermelho (issue nova).
+- O app não tem tema escuro próprio (não há `prefers-color-scheme` no CSS): o axe roda só no claro.
+
+**Qualidade.**
+- Testes: os 9 de `node --test` seguem; entram o teste da página 429, o da seção "Quem pode doar" e o teste Playwright com axe e teclado.
+- Segurança: `npm audit --omit=dev` como passo do CI; nenhum dado pessoal novo (nomes e e-mails fictícios em `@empresa.test`).
+
+**Definição de pronto.** Jobs `raiz` e `e2e` verdes no PR; `MVP.md` com uma tabela só e evidência com comando, data e resultado; README com "Estado e próximos passos".
+
+### Plano de ação
+
+**Este ciclo executa.** Itens 1 a 6 do backlog, `MVP.md`, README e `DEPLOY.md`.
+
+**Vira issue.** Itens 7 a 10 (novos); #10, #11, #12 e #16 seguem abertas.
