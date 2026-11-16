@@ -1,12 +1,12 @@
 # MVP — doe-sangue-salve-vidas
 
-> Criado em 02/11/2026. Revisado em 16/11/2026 contra a régua de `engenharia/arquitetura/padroes.md`. Não houve teste com pessoas nem em aparelho real.
+> Criado em 02/11/2026. Revisado em 16/11/2026 (e às 15h27, critério 9 com os alertas do Dependabot ligados) contra a régua de `engenharia/arquitetura/padroes.md`. Não houve teste com pessoas nem em aparelho real.
 
 **Nível:** Estudo (N1). Os critérios 5 e 7 são "Não se aplica (N1)" e saem da conta.
 
 **Resumo:** 9 de 10 aplicáveis atendidos
 
-**Finalizado:** sim — pela decisão 4 do processo: o único critério fora de "Atende" (9) depende do responsável e tem issues com `depende-do-responsavel` (#22 e #24).
+**Finalizado:** sim — pela decisão 4 do processo: o único critério fora de "Atende" (9) depende do responsável pela decisão sobre os dados no histórico e tem issue com `depende-do-responsavel` (#22).
 
 ## 1. Critérios em 16/11/2026
 
@@ -22,7 +22,7 @@ CI de referência: run [43800634377](https://github.com/douglasabnovato/doe-sang
 | 6 | Falhas tratadas | Atende | `npm test` no job `raiz` do run 43800634377, 16/11/2026: 11 pass, 0 skipped. Cobre banco fora (503), consentimento ausente (422), lista vazia, excesso de envios (429 em português) e e-mail repetido; o `e2e` cobre a página 404 | — |
 | 7 | Desempenho aceitável | Não se aplica (N1) | Sem publicação: `curl -s -o /dev/null -w "%{http_code}" https://doe-sangue-salve-vidas.onrender.com`, 16/11/2026: 404 | #16 |
 | 8 | Acessibilidade básica | Atende | Job `e2e` do run 43800634377, 16/11/2026: axe (WCAG 2.1 A e AA) sem violações em 6 estados, na largura de desktop: página inicial, formulário aberto, formulário com erro, depois do cadastro (com lista e tabela), e-mail repetido e 404. Teclado: o 1º Tab chega ao botão com contorno de 3 px, Enter abre o formulário e foca o nome, o erro leva o foco ao campo, Espaço marca o consentimento. Não há diálogo, então não há Esc a testar. Axe só no claro: o CSS não tem `prefers-color-scheme`, e o app não tem tema escuro próprio (#26) | — |
-| 9 | Segurança e conformidade | Parcial | `npm audit --omit=dev`, 16/11/2026: 0 vulnerabilidades (local e no job `raiz` do run 43800634377). Alertas do Dependabot desligados (API 403; #24). Sem segredo na árvore: o `server.js` antigo, com a senha local, saiu no PR #21. A captura com nomes e tipo sanguíneo foi trocada por dados fictícios, mas segue no histórico com outros dados: falta a decisão do responsável | #22, #24 |
+| 9 | Segurança e conformidade | Parcial | `npm ci` e `npm audit --omit=dev`, 16/11/2026 15h28: found 0 vulnerabilities (também no job `raiz` do run 43800634377). Alertas do Dependabot ligados: `gh api "repos/douglasabnovato/doe-sangue-salve-vidas/dependabot/alerts?state=open&per_page=100"`, 16/11/2026 15h27: 0 abertos. Sem segredo na árvore: o `server.js` antigo, com a senha local, saiu no PR #21. A captura com nomes e tipo sanguíneo foi trocada por dados fictícios, mas segue no histórico com outros dados: falta a decisão do responsável, que é o que ainda segura o "Parcial" | #22 |
 | 10 | Entrega confiável | Atende | `gh api repos/douglasabnovato/doe-sangue-salve-vidas/rules/branches/master`, 16/11/2026: `deletion`, `non_fast_forward`, `pull_request` e `required_status_checks` (job `raiz`). O CI roda em PR para `master` e `developer/**`. Exigir também o `e2e` é do responsável | #23 |
 | 11 | Testes dos fluxos críticos | Atende | Run 43800634377, 16/11/2026: `raiz` com `# tests 11`, `# pass 11`, `# skipped 0`; `e2e` com 3 passed | — |
 | 12 | Documentação honesta | Atende | Comandos do README conferidos contra o `package.json` em 16/11/2026 (`start`, `dev`, `demo`, `test`, `test:e2e`); sem link publicado, porque responde 404 | — |
@@ -40,6 +40,8 @@ Agenda de doação, contas, lembrete de próxima doação, integração com hemo
 Teste no navegador com axe no CI, página 429 em português, "Quem pode doar" com fonte oficial (#13), arquivos antigos removidos (#15), captura com dados fictícios, `npm audit` no CI e patch do `pg`.
 
 ## Histórico
+
+- 16/11/2026, 15h27: o responsável ligou os alertas do Dependabot; o critério 9 trocou "desligados (API 403; #24)" por 0 alertas abertos e 0 no audit de produção, e segue Parcial pelos dados no histórico (#22). Resumo igual: 9 de 10.
 
 ### Resumo declarado em 10/11/2026
 
