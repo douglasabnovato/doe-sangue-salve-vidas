@@ -10,7 +10,7 @@ flowchart LR
 
 | Contêiner | Tecnologia | Responsabilidade |
 |---|---|---|
-| Web | Node 20, Express 4, Nunjucks | Página, validação, consentimento |
+| Web | Node 22, Express 4, Nunjucks | Página, validação, consentimento, "Quem pode doar" |
 | Banco | PostgreSQL 16 | Doadores |
 | Hospedagem | Render Web Service (gratuito) + Neon (gratuito) | Execução e dados |
 
@@ -19,6 +19,7 @@ flowchart TB
   server[src/server.js] --> migrate[src/db/migrate.js]
   server --> app[src/app.js]
   app --> repo[src/donorRepository.js]
+  server --> mem[src/memoryDonorRepository.js]
   app --> val[src/lib/donorValidation.js]
   repo --> val
 ```
@@ -41,7 +42,7 @@ flowchart TB
 | Rota | Resposta |
 |---|---|
 | `GET /` | 200 página com últimos 8 (nome minimizado) e contagem por tipo |
-| `POST /` | 303 `/?status=ok` · 303 `/?status=existente` · 422 com erros · 429 (5/min) |
+| `POST /` | 303 `/?status=ok` · 303 `/?status=existente` · 422 com erros · 429 com página em português (5 envios por minuto) |
 | `GET /health` | 200 `{ status, donors }` |
 | Falha de banco | 503 página amigável |
 
@@ -52,6 +53,7 @@ flowchart TB
 - **ADR-003 — Migrations idempotentes na subida.** `IF NOT EXISTS` permite rodar a cada deploy sem ferramenta extra.
 - **ADR-004 — Testes com PostgreSQL real.** O CI sobe um serviço Postgres; localmente, `TEST_DATABASE_URL`. Sem a variável, os testes de banco são pulados (não falham).
 - **ADR-005 — Neon em vez de Render Postgres.** O Postgres gratuito do Render expira; o Neon mantém o plano gratuito sem prazo.
+- **ADR-006 — Teste no navegador com o servidor real.** O Playwright (`e2e/fluxo.e2e.js`) sobe `src/server.js` pelo `webServer`: no CI com PostgreSQL 16 (`E2E_DATABASE_URL`), localmente em memória. O axe roda em cada tela. O app não tem tema escuro próprio, então o axe roda só no claro.
 
 ## 5. Fora do escopo
 

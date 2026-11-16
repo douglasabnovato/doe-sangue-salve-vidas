@@ -28,8 +28,8 @@ Crie **um único projeto no Neon** (por exemplo `portfolio-ser-mvp`) e, dentro d
 | `NODE_VERSION` `"22"` | `render.yaml` | O Node 20 saiu de suporte em abr/2026 |
 | `autoDeployTrigger: commit` | `render.yaml` | Cada push na `master` publica sozinho |
 | `buildCommand: npm ci --omit=dev` | `render.yaml` | Em produção não precisa do `supertest` |
-| Node 22 no CI | `ci/github-actions-ci.yml` | Testar na mesma versão da produção |
-| Seção "Em produção" | `Readme.md` | URL, hospedagem e link para este guia |
+| Node 22 no CI | `.github/workflows/ci.yml` | Testar na mesma versão da produção |
+| Seção "Publicação" | `Readme.md` | Estado do link, hospedagem e link para este guia |
 
 Já estava pronto do ciclo anterior: `DATABASE_URL` lida do ambiente, migrações idempotentes rodando na subida (`src/db/migrate.js`), `trust proxy` por `TRUST_PROXY=1`, TLS por `DATABASE_SSL=1` e a rota `/health` usada pelo Render.
 
@@ -41,7 +41,7 @@ Já estava pronto do ciclo anterior: `DATABASE_URL` lida do ambiente, migraçõe
 
 ### Segurança e LGPD
 
-- A senha antiga do PostgreSQL local (`1234560`) continua no histórico do Git. Se ela foi usada em algum servidor, troque-a.
+- A senha antiga do PostgreSQL local, do `server.js` da raiz (removido em 16/11/2026), continua no histórico do Git. Se ela foi usada em algum servidor, troque-a.
 - Tipo sanguíneo é dado de saúde (dado sensível na LGPD). O cadastro só é aceito com consentimento explícito, e a lista pública mostra apenas primeiro nome, inicial e tipo.
 - Registros antigos sem consentimento ficam ocultos. O banco do Neon nasce vazio, então isso só importa no seu banco local: se ele tiver dados reais, apague-os.
 - Ainda não há remoção pelo próprio usuário (próximo ciclo). Pedido de exclusão é atendido no **SQL Editor** do Neon com `DELETE FROM donors WHERE lower(email) = lower('email@da.pessoa');`.
@@ -51,7 +51,7 @@ Já estava pronto do ciclo anterior: `DATABASE_URL` lida do ambiente, migraçõe
 
 ### Etapa 0 · Segredos e LGPD
 
-1. Se a senha `1234560` foi usada em algum PostgreSQL fora da sua máquina, troque-a nesse servidor.
+1. Se a senha antiga do `server.js` da raiz (está no histórico do Git) foi usada em algum PostgreSQL fora da sua máquina, troque-a nesse servidor.
 2. Se o seu banco local tiver dados reais sem consentimento, apague-os: `DELETE FROM donors WHERE consent_at IS NULL;`.
 
 ### Etapa 1 · Criar o banco no Neon
@@ -65,23 +65,20 @@ Já estava pronto do ciclo anterior: `DATABASE_URL` lida do ambiente, migraçõe
 
 ### Etapa 2 · Validar localmente (Git Bash)
 
-1. `cd /c/ambiente-projeto/ser-mvp/doe-sangue-salve-vidas`
+1. Clonar e entrar na pasta: `git clone https://github.com/douglasabnovato/doe-sangue-salve-vidas && cd doe-sangue-salve-vidas`
 2. `npm ci`
-3. `npm test` (sem `TEST_DATABASE_URL`: 2 testes passam e 5 de banco ficam pulados; o CI roda os 7 com PostgreSQL)
-4. Opcional, para provar a conexão com o Neon: `cp .env.example .env`, colar a string na `DATABASE_URL`, pôr `DATABASE_SSL=1` e rodar `npm run dev`. Abrir `http://localhost:3000/health` e ver `{"status":"ok","donors":0}`. A tabela é criada nessa primeira subida.
-5. Nunca aponte `TEST_DATABASE_URL` para o banco do Neon: os testes apagam a tabela `donors`.
+3. `npm test`: sem `TEST_DATABASE_URL`, 7 testes passam e 4 de banco ficam pulados; o CI roda os 11 com PostgreSQL 16.
+4. `npx playwright install chromium` e `npm run test:e2e`: o teste no navegador sobe o modo demonstração (memória) na porta 3210.
+5. Opcional, para provar a conexão com o Neon: `cp .env.example .env`, colar a string na `DATABASE_URL`, pôr `DATABASE_SSL=1` e rodar `npm run dev`. Abrir `http://localhost:3000/health` e ver `{"status":"ok","donors":0}`. A tabela é criada nessa primeira subida.
+6. Nunca aponte `TEST_DATABASE_URL` nem `E2E_DATABASE_URL` para o banco do Neon: os testes apagam e gravam na tabela `donors`.
 
-### Etapa 3 · Subir para o GitHub (branch `master`)
+### Etapa 3 · Conferir a `master`
 
-1. Remover os arquivos antigos (movidos para `views/` e `src/`):
-   `git rm index.html server.js`
-2. Ativar o CI (a pasta `.github` é protegida para a ferramenta que preparou o projeto):
-   `mkdir -p .github/workflows && mv ci/github-actions-ci.yml .github/workflows/ci.yml && rmdir ci`
-3. `git status` (não podem aparecer `.env` nem `node_modules/`)
-4. `git add -A`
-5. `git commit -m "feat(deploy): Node 22, deploy automático no Render, guia de deploy com Neon"`
-6. `git push origin master`
-7. No GitHub, aba **Actions**: o CI precisa ficar verde (7 testes com PostgreSQL e auditoria).
+Depois do merge do PR sprint → `master`, não há passo manual de Git:
+- os arquivos antigos da raiz (`server.js`, `index.html`) e a pasta `ci/` saíram no ciclo de 16/11/2026;
+- o workflow ativo é `.github/workflows/ci.yml`, com os jobs `raiz` (testes e `npm audit`) e `e2e` (Playwright com axe e PostgreSQL).
+
+1. No GitHub, aba **Actions**: o último run do `CI` na `master` precisa estar verde nos dois jobs.
 
 ### Etapa 4 · Criar o serviço no Render
 
@@ -94,7 +91,7 @@ Já estava pronto do ciclo anterior: `DATABASE_URL` lida do ambiente, migraçõe
 ### Etapa 5 · Conferir no ar
 
 1. `https://doe-sangue-salve-vidas.onrender.com/health` responde `{"status":"ok","donors":0}`.
-2. A página inicial abre com o logo, a fonte Roboto e a tabela por tipo sanguíneo.
+2. A página inicial abre com o logo, a fonte Roboto e a seção "Quem pode doar" com o link do Ministério da Saúde.
 3. **Quero ajudar** sem marcar o consentimento mostra o erro no campo.
 4. Cadastro completo mostra "Cadastro feito. Obrigado!" e a lista mostra só "Nome I." e o tipo.
 5. Repetir o mesmo e-mail mostra "Este e-mail já está na lista".
