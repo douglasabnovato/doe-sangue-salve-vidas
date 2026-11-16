@@ -33,7 +33,7 @@ Página que incentiva a doação de sangue e forma uma lista de pessoas disposta
 | # | Severidade | Defeito |
 |---|---|---|
 | D1 | Crítica (LGPD) | Nome completo + tipo sanguíneo publicados sem consentimento |
-| D2 | Alta | Senha do PostgreSQL (`1234560`) no código |
+| D2 | Alta | Senha do PostgreSQL escrita no código (o `server.js` antigo saiu em 16/11/2026; a senha segue no histórico, #22) |
 | D3 | Alta | Tabela nunca é criada pela aplicação (sem schema/migration) |
 | D4 | Média | Tipo sanguíneo em texto livre, e-mail sem validação nem unicidade |
 | D5 | Média | Erros de banco retornam texto puro; sem 404/500 |

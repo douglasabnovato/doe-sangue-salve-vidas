@@ -28,7 +28,18 @@ function createApp({ donors, trustProxy = false }) {
   app.use(express.urlencoded({ extended: false, limit: "5kb" }));
   nunjucks.configure(path.join(__dirname, "..", "views"), { express: app, autoescape: true });
 
-  const postLimiter = rateLimit({ windowMs: 60_000, limit: 5, standardHeaders: "draft-7", legacyHeaders: false });
+  const postLimiter = rateLimit({
+    windowMs: 60_000,
+    limit: 5,
+    standardHeaders: "draft-7",
+    legacyHeaders: false,
+    /* Responde o excesso de envios com a página de erro em português */
+    handler: (req, res) =>
+      res.status(429).render("error.html", {
+        status: 429,
+        message: "Você enviou muitos cadastros em pouco tempo. Aguarde um minuto e tente de novo.",
+      }),
+  });
 
   /* Carrega os dados da página inicial */
   async function pageData(extra = {}) {
