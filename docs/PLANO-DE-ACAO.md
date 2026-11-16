@@ -97,7 +97,7 @@ Timebox: 45 min (ciclo completo).
 
 | Ideia | O que levamos para o projeto | Fonte |
 |---|---|---|
-| Requisitos básicos do Ministério da Saúde: 16 a 69 anos (menores com autorização), pelo menos 50 kg, documento com foto, estar alimentado e descansado | Seção "Quem pode doar" na página, com link para a fonte e data da consulta (#13). Não citamos intervalo entre doações: a página oficial não traz e a portaria de 2026 mudou prazos | [Ministério da Saúde: doação de sangue](https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/doacao-de-sangue), consultada em 16/11/2026 |
+| Requisitos básicos do Ministério da Saúde: 16 a 69 anos (menores com autorização), pelo menos 50 kg, documento com foto, estar alimentado e descansado | Seção "Quem pode doar" na página, com link para a fonte e data da consulta (#13). Não citamos intervalo entre doações: a página oficial não traz e a portaria de 2026 mudou prazos | [Ministério da Saúde: doação de sangue](https://www.gov.br/saude/pt-br/composicao/saes/sangue), consultada em 16/11/2026 |
 | O Playwright recomenda o `@axe-core/playwright` para achar problemas de acessibilidade dentro do teste de ponta a ponta | Teste `e2e` com axe na página inicial, no formulário aberto, com erros e depois do cadastro | [Playwright: accessibility testing](https://playwright.dev/docs/accessibility-testing) |
 | O `express-rate-limit` aceita um `handler` próprio para a resposta 429 | Página de erro em português para o limite de envios, com teste | [express-rate-limit: handler](https://express-rate-limit.mintlify.app/reference/configuration#handler) |
 
