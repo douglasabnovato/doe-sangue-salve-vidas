@@ -1,14 +1,51 @@
 # MVP — doe-sangue-salve-vidas
 
-> Criado em 02/11/2026. Meta: N1 (estudo). Testado no Windows, com Node 24, na cópia de `master`. Não houve teste com pessoas nem em aparelho real.
+> Criado em 02/11/2026. Revisado em 16/11/2026 contra a régua de `engenharia/arquitetura/padroes.md`. Não houve teste com pessoas nem em aparelho real.
 
 **Nível:** Estudo (N1). Os critérios 5 e 7 são "Não se aplica (N1)" e saem da conta.
 
-**Resumo:** 10 de 10 aplicáveis atendidos
+**Resumo:** 9 de 10 aplicáveis atendidos
 
-**Finalizado:** sim — todos os critérios aplicáveis estão em "Atende". A proteção da `master` (#14) foi criada em 10/11/2026; a issue fecha no merge da `master`.
+**Finalizado:** sim — pela decisão 4 do processo: o único critério fora de "Atende" (9) depende do responsável e tem issue com `depende-do-responsavel` (#22).
 
-## 1. Critérios em 10/11/2026
+## 1. Critérios em 16/11/2026
+
+CI de referência: run [43799566197](https://github.com/douglasabnovato/doe-sangue-salve-vidas/actions/runs/43799566197) do PR #21, jobs `raiz` e `e2e` verdes.
+
+| # | Critério | Situação | Evidência (comando, data, resultado) | Issue |
+|---|---|---|---|---|
+| 1 | Problema e público claros | Atende | README, seção "Problema e proposta" (16/11/2026): pessoas dispostas a doar entram, com consentimento, numa lista que mostra só o primeiro nome, a inicial e o tipo | — |
+| 2 | Hipótese a validar | Atende | Seção 2, com meta e "saberemos quando" (16/11/2026) | — |
+| 3 | Fluxo principal completo | Atende | `npm run test:e2e` no job `e2e` do run 43799566197, 16/11/2026: 3 passed. O Playwright sobe `src/server.js` com PostgreSQL 16, conclui o cadastro só com teclado e vê o nome minimizado na lista (`e2e/fluxo.e2e.js`) | #10 (ver no computador local) |
+| 4 | Escopo enxuto | Atende | Seção 3 (16/11/2026) | — |
+| 5 | Medição de uso | Não se aplica (N1) | Projeto de estudo | — |
+| 6 | Falhas tratadas | Atende | `npm test` no job `raiz` do run 43799566197, 16/11/2026: 11 pass, 0 skipped. Cobre banco fora (503), consentimento ausente (422), lista vazia, excesso de envios (429 em português) e e-mail repetido; o `e2e` cobre a página 404 | — |
+| 7 | Desempenho aceitável | Não se aplica (N1) | Sem publicação: `curl -s -o /dev/null -w "%{http_code}" https://doe-sangue-salve-vidas.onrender.com`, 16/11/2026: 404 | #16 |
+| 8 | Acessibilidade básica | Atende | Job `e2e` do run 43799566197, 16/11/2026: axe (WCAG 2.1 A e AA) sem violações em 6 estados, na largura de desktop: página inicial, formulário aberto, formulário com erro, depois do cadastro (com lista e tabela), e-mail repetido e 404. Teclado: o 1º Tab chega ao botão com contorno de 3 px, Enter abre o formulário e foca o nome, o erro leva o foco ao campo, Espaço marca o consentimento. Não há diálogo, então não há Esc a testar. O app não tem tema escuro próprio (#26) | — |
+| 9 | Segurança e conformidade | Parcial | `npm audit --omit=dev`, 16/11/2026: 0 vulnerabilidades (local e no job `raiz` do run 43799566197). Alertas do Dependabot desligados (API 403; #24). Sem segredo na árvore: o `server.js` antigo, com a senha local, saiu no PR #21. A captura com nomes e tipo sanguíneo foi trocada por dados fictícios, mas segue no histórico com outros dados: falta a decisão do responsável | #22, #24 |
+| 10 | Entrega confiável | Atende | `gh api repos/douglasabnovato/doe-sangue-salve-vidas/rules/branches/master`, 16/11/2026: `deletion`, `non_fast_forward`, `pull_request` e `required_status_checks` (job `raiz`). O CI roda em PR para `master` e `developer/**`. Exigir também o `e2e` é do responsável | #23 |
+| 11 | Testes dos fluxos críticos | Atende | Run 43799566197, 16/11/2026: `raiz` com `# tests 11`, `# pass 11`, `# skipped 0`; `e2e` com 3 passed | — |
+| 12 | Documentação honesta | Atende | Comandos do README conferidos contra o `package.json` em 16/11/2026 (`start`, `dev`, `demo`, `test`, `test:e2e`); sem link publicado, porque responde 404 | — |
+
+## 2. Hipótese
+
+Acreditamos que uma página única, com consentimento claro e só quatro campos, faz a pessoa entrar na lista em menos de 1 minuto. **Meta:** cadastro concluído só com teclado, sem ajuda e sem erro de acessibilidade. **Saberemos quando** o teste `e2e/fluxo.e2e.js` concluir o cadastro no CI, com PostgreSQL real, e o nome minimizado aparecer na lista. Validar com pessoas fica fora do N1.
+
+## 3. Fora do MVP
+
+Agenda de doação, contas, lembrete de próxima doação, integração com hemocentros, saída da lista sem ajuda (#12) e tema escuro (#26).
+
+## 4. Neste ciclo (16/11/2026)
+
+Teste no navegador com axe no CI, página 429 em português, "Quem pode doar" com fonte oficial (#13), arquivos antigos removidos (#15), captura com dados fictícios, `npm audit` no CI e patch do `pg`.
+
+## Histórico
+
+### Resumo declarado em 10/11/2026
+
+10 de 10 aplicáveis atendidos, Finalizado: sim. A revisão de 16/11/2026 achou os critérios 3 e 8 sem o teste no navegador que a régua pede e o critério 9 com evidência de 02/11/2026: pela régua, eram 7 de 10.
+
+### Critérios de 10/11/2026: 10 de 10 declarados
 
 | # | Critério | Situação | Evidência (comando, data, resultado) | Issue |
 |---|---|---|---|---|
@@ -24,20 +61,6 @@
 | 10 | Entrega confiável | Atende | `gh api repos/douglasabnovato/doe-sangue-salve-vidas/rulesets`, 10/11/2026: ruleset `principal-protegida` ativo (exige PR, bloqueia force push e exclusão); o workflow `CI` (job `raiz`) roda em PR para `master` e `developer/**` | #14 |
 | 11 | Testes dos fluxos críticos | Atende | Testes de integração rodam no CI com o serviço PostgreSQL do workflow (06/11/2026) | — |
 | 12 | Documentação honesta | Atende | Comandos conferidos com o `package.json`; aviso de estudo no README (02/11/2026) | — |
-
-## 2. Hipótese (proposta)
-
-Praticar Node com PostgreSQL: cadastrar-se com consentimento em menos de 1 minuto.
-
-## 3. Fora do MVP
-
-Agenda de doação e contas.
-
-## 4. Neste ciclo
-
-Atualiza dependências com alerta.
-
-## Histórico
 
 ### Critérios de 02/11/2026: 7 de 12 atendidos
 

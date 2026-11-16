@@ -1,4 +1,4 @@
-> **Projeto de estudo.** Estado conferido em 31/10/2026: os endereços que seguem fora do ar foram retirados deste README. Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
+> **Projeto de estudo.** Estado conferido em 16/11/2026: o endereço antigo segue fora do ar e não aparece como link. Detalhes em [docs/AVALIACAO.md](docs/AVALIACAO.md) e próximos passos em [docs/PLANO-ESTRATEGICO.md](docs/PLANO-ESTRATEGICO.md).
 
 <h1 align="center">Doe Sangue! Salve Vidas!</h1>
 
@@ -6,31 +6,34 @@
 
 <p align="center"><img alt="Tela da aplicação" src="./assets/tela-da-aplicacao.jpg" width="400"></p>
 
-## Estado e próximos passos (ciclo de 03/11/2026)
+## Estado e próximos passos (ciclo de 16/11/2026)
 
-**Estado em 10/11/2026:** Estudo (N1), 10 de 10 critérios aplicáveis atendidos; **Finalizado: sim**. A `master` está protegida desde 10/11/2026 (ruleset `principal-protegida`). Detalhes em [`docs/MVP.md`](docs/MVP.md).
+**Estado em 16/11/2026:** Estudo (N1), 9 de 10 critérios aplicáveis atendidos; **Finalizado: sim**. O que falta (critério 9) depende do responsável (#22). Detalhes em [`docs/MVP.md`](docs/MVP.md).
 
-**Sem link publicado:** `https://doe-sangue-salve-vidas.onrender.com` respondeu 404 em 06/11/2026; o serviço não existe (#16). Para ver a tela sem banco, rode `npm run demo`.
+**Sem link publicado:** `https://doe-sangue-salve-vidas.onrender.com` respondeu 404 em 16/11/2026; o serviço não existe (#16). Para ver a tela sem banco, rode `npm run demo`.
 
 **O que foi feito**
-- Modo demonstração em memória (`npm run demo`), sem PostgreSQL, com testes (PR deste ciclo para a `developer/sprint-2026-11-12`).
-- O CI roda de fato os testes de integração, com PostgreSQL 16; antes eles eram pulados.
-- O cadastro foi feito no navegador só com teclado, com Lighthouse de acessibilidade 100.
-- O [`docs/MVP.md`](docs/MVP.md) segue a régua N1 e está "Finalizado: sim"; a proteção da `master` (#14) foi criada em 10/11/2026.
+- PR #21 (16/11/2026): teste no navegador com Playwright e axe no CI, com PostgreSQL 16 (job `e2e`); página em português para o excesso de envios (429); seção "Quem pode doar" com fonte do Ministério da Saúde (#13); servidor, página e CI antigos removidos da raiz (#15); captura do README com dados fictícios; `npm audit` no CI; patch do `pg`; logo sem distorção.
+- PR #19 (10/11/2026): critério 10 com a `master` protegida (#14).
+- PR #17 (06/11/2026): modo demonstração em memória e testes de integração rodando no CI.
 - Antes: licença MIT (#5) e o que aprendi (#4).
 
 **O que queremos fazer**
-- #10 Ver o cadastro com PostgreSQL real no navegador (responsável).
+- #22 Decidir sobre os dados pessoais no histórico do Git (responsável).
+- #23 Exigir o job `e2e` no ruleset da `master` (responsável).
+- #24 Ligar os alertas do Dependabot (responsável).
+- #16 Decidir a publicação no Render (responsável; passo a passo em [`docs/DEPLOY.md`](docs/DEPLOY.md)).
+- #10 Ver o cadastro com PostgreSQL no computador local (responsável).
 - #11 Oferecer `docker-compose.yml` com o PostgreSQL.
 - #12 Permitir que a pessoa saia da lista.
-- #13 Mostrar quem pode doar, com fonte oficial.
-- #14 Proteger a `master`: feito em 10/11/2026; a issue fecha no merge da `master`.
-- #15 Remover o servidor e a página antigos da raiz.
-- #16 Decidir a publicação no Render (responsável).
+- #25 Atualizar para Express 5 e `express-rate-limit` 8.
+- #26 Oferecer tema escuro, com axe nos dois temas.
 
 **Onde está a documentação**
 - Estado dos critérios: [`docs/MVP.md`](docs/MVP.md)
 - Plano do ciclo: [`docs/PLANO-DE-ACAO.md`](docs/PLANO-DE-ACAO.md)
+- Arquitetura e decisões: [`docs/ARQUITETURA.md`](docs/ARQUITETURA.md)
+- Publicação passo a passo: [`docs/DEPLOY.md`](docs/DEPLOY.md)
 
 ## 🧠 O que aprendi
 
@@ -39,7 +42,7 @@
 - Renderizar páginas no servidor com Express e Nunjucks.
 - Persistir dados em PostgreSQL com `pg`.
 - Limitar envios com `express-rate-limit`.
-- Testar a aplicação com `node --test`.
+- Testar a aplicação com `node --test` e, no navegador, com Playwright e axe.
 
 ## Problema e proposta
 
@@ -53,11 +56,12 @@ Apenas 1,4% da população brasileira doa sangue regularmente (Ministério da Sa
 - Cadastro com nome, e-mail, tipo sanguíneo (A±, B±, AB±, O±) e **consentimento LGPD** obrigatório.
 - Lista pública só com primeiro nome + inicial do sobrenome e tipo; e-mail nunca aparece.
 - E-mail repetido não duplica o cadastro.
-- Erros por campo, confirmação após o envio, páginas 404 e 503.
+- Erros por campo, confirmação após o envio, páginas 404, 429 e 503.
+- Seção "Quem pode doar" com os critérios básicos e link para o Ministério da Saúde.
 
 ## Stack
 
-Node 22 · Express 4 · Nunjucks · PostgreSQL 16 (pg) · helmet · node:test + supertest.
+Node 22 · Express 4 · Nunjucks · PostgreSQL 16 (pg) · helmet · node:test + supertest · Playwright + axe.
 
 ## Como rodar
 
@@ -66,6 +70,15 @@ npm install
 cp .env.example .env      # ajuste DATABASE_URL
 npm run dev               # cria/atualiza a tabela e sobe em http://localhost:3000
 TEST_DATABASE_URL=postgres://postgres@localhost:5432/postgres npm test
+```
+
+Sem PostgreSQL:
+
+```sh
+npm run demo              # dados só em memória, em http://localhost:3000
+npm test                  # 7 testes; os 4 de banco ficam pulados
+npx playwright install chromium
+npm run test:e2e          # cadastro no navegador, com axe (modo demonstração na porta 3210)
 ```
 
 ## Publicação
