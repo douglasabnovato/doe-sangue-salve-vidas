@@ -8,7 +8,8 @@ module.exports = defineConfig({
   testDir: "e2e",
   testMatch: /.*\.e2e\.js$/,
   timeout: 60_000,
-  retries: process.env.CI ? 1 : 0,
+  /* Sem nova tentativa: o limite de 5 envios por minuto faria um retry falhar com 429 */
+  retries: 0,
   workers: 1,
   reporter: [["list"]],
   use: { baseURL: `http://localhost:${PORT}`, trace: "retain-on-failure", reducedMotion: "reduce" },

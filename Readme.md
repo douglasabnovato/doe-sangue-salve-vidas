@@ -8,7 +8,7 @@
 
 ## Estado e próximos passos (ciclo de 16/11/2026)
 
-**Estado em 16/11/2026:** Estudo (N1), 9 de 10 critérios aplicáveis atendidos; **Finalizado: sim**. O que falta (critério 9) depende do responsável (#22). Detalhes em [`docs/MVP.md`](docs/MVP.md).
+**Estado em 16/11/2026:** Estudo (N1), 9 de 10 critérios aplicáveis atendidos; **Finalizado: sim**. O que falta (critério 9) depende do responsável (#22 e #24). Detalhes em [`docs/MVP.md`](docs/MVP.md).
 
 **Sem link publicado:** `https://doe-sangue-salve-vidas.onrender.com` respondeu 404 em 16/11/2026; o serviço não existe (#16). Para ver a tela sem banco, rode `npm run demo`.
 

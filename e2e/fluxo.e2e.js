@@ -72,25 +72,25 @@ test("entra na lista só com teclado e aparece com o nome minimizado", async ({ 
   await semViolacoes(page);
 });
 
-test("o mesmo e-mail não duplica o cadastro", async ({ page }) => {
-  await page.goto("/");
-  await page.getByRole("button", { name: "Quero ajudar" }).first().click();
-  await page.getByLabel("Nome completo", { exact: true }).fill(`${primeiroNome} Repetida`);
-  await page.getByLabel("E-mail", { exact: true }).fill(email.toUpperCase());
-  await page.getByLabel("Tipo sanguíneo", { exact: true }).selectOption("A-");
-  await page.locator("#consent").check();
-  await page.getByRole("button", { name: "Quero ajudar" }).last().click();
-  await expect(page).toHaveURL(/\?status=(existente|ok)#doadores$/);
-  /* Se este teste rodar sozinho, o primeiro envio cria; o segundo precisa dizer que já existe */
-  if (page.url().includes("status=ok")) {
+test("o mesmo e-mail, com maiúsculas, não duplica o cadastro", async ({ page }) => {
+  const emailProprio = `repetida.${id}@empresa.test`;
+  /* Preenche e envia o formulário com o e-mail dado */
+  async function cadastrar(endereco) {
+    await page.goto("/");
     await page.getByRole("button", { name: "Quero ajudar" }).first().click();
-    await page.getByLabel("Nome completo", { exact: true }).fill(`${primeiroNome} Repetida`);
-    await page.getByLabel("E-mail", { exact: true }).fill(email);
+    await page.getByLabel("Nome completo", { exact: true }).fill(`Repetida${id} Exemplo`);
+    await page.getByLabel("E-mail", { exact: true }).fill(endereco);
     await page.getByLabel("Tipo sanguíneo", { exact: true }).selectOption("A-");
     await page.locator("#consent").check();
     await page.getByRole("button", { name: "Quero ajudar" }).last().click();
   }
+  await cadastrar(emailProprio);
+  await expect(page).toHaveURL(/\?status=ok#doadores$/);
+  await cadastrar(emailProprio.toUpperCase());
+  await expect(page).toHaveURL(/\?status=existente#doadores$/);
   await expect(page.getByRole("status")).toContainText("Este e-mail já está na lista");
+  await expect(page.locator("ul.donors")).toContainText(`Repetida${id} E.`);
+  expect(await page.locator("ul.donors li", { hasText: `Repetida${id} E.` }).count()).toBe(1);
   await semViolacoes(page);
 });
 

@@ -88,7 +88,7 @@ Timebox: 45 min (ciclo completo).
 **O que a análise achou.**
 - O `docs/MVP.md` marcava os critérios 3 e 8 como "Atende" com um teste manual de 06/11/2026. A régua pede Playwright no CI e axe dentro dele. Os dois passam a "Parcial" até o teste existir.
 - O critério 9 citava um `npm audit` de 02/11/2026. Os alertas do Dependabot estão desligados (API 403), então o `npm audit --omit=dev` é a única fonte e precisa rodar no CI.
-- A captura de tela do README (`assets/tela-da-aplicacao.jpg`) mostra nomes completos com tipo sanguíneo, que é dado de saúde. Ela sai da árvore neste ciclo; o histórico é decisão do responsável.
+- A captura de tela do README (`assets/tela-da-aplicacao.jpg`) mostra nomes completos com tipo sanguíneo, que é dado de saúde. Ela é trocada neste ciclo por uma captura com dados fictícios; o histórico é decisão do responsável.
 - O histórico também guarda um exemplo de `INSERT` com nome e e-mail de terceiro no README antigo (removido em 28/09/2026) e a senha local antiga do PostgreSQL no `server.js` da raiz.
 - O limite de envios (5 por minuto) responde com texto em inglês, sem página própria. É uma falha sem tratamento.
 - O `ci/github-actions-ci.yml` não é lido pelo GitHub, mas tem o passo de `npm audit` que o workflow ativo não tem.
