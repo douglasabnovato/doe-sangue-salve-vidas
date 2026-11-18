@@ -61,7 +61,7 @@ Apenas 1,4% da população brasileira doa sangue regularmente (Ministério da Sa
 
 ## Stack
 
-Node 22 · Express 4 · Nunjucks · PostgreSQL 16 (pg) · helmet · node:test + supertest · Playwright + axe.
+Node 22 · Express 5 · Nunjucks · PostgreSQL 16 (pg) · helmet · node:test + supertest · Playwright + axe.
 
 ## Como rodar
 
@@ -76,7 +76,7 @@ Sem PostgreSQL:
 
 ```sh
 npm run demo              # dados só em memória, em http://localhost:3000
-npm test                  # 7 testes; os 4 de banco ficam pulados
+npm test                  # 8 testes; os 4 de banco ficam pulados
 npx playwright install chromium
 npm run test:e2e          # cadastro no navegador, com axe (modo demonstração na porta 3210)
 ```
