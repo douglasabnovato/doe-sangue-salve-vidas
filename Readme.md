@@ -21,13 +21,12 @@
 **O que queremos fazer**
 - #22 Decidir sobre os dados pessoais no histórico do Git (responsável).
 - #23 Exigir o job `e2e` no ruleset da `master` (responsável).
-- #24 Alertas do Dependabot: ligados em 16/11/2026, com 0 abertos; a evidência está na issue, e fechá-la é do responsável.
+- #24 Alertas do Dependabot: ligados, com 0 abertos (18/11/2026); falta ligar as correções automáticas (responsável).
 - #16 Decidir a publicação no Render (responsável; passo a passo em [`docs/DEPLOY.md`](docs/DEPLOY.md)).
 - #10 Ver o cadastro com PostgreSQL no computador local (responsável).
-- #11 Oferecer `docker-compose.yml` com o PostgreSQL.
 - #12 Permitir que a pessoa saia da lista.
-- #25 Atualizar para Express 5 e `express-rate-limit` 8.
-- #26 Oferecer tema escuro, com axe nos dois temas.
+- #25 Express 5 e `express-rate-limit` 8: no PR #30, falta a `master`.
+- #27 Título em texto nas páginas de erro: no PR #30, falta a `master`.
 
 **Onde está a documentação**
 - Estado dos critérios: [`docs/MVP.md`](docs/MVP.md)
