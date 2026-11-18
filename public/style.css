@@ -184,6 +184,7 @@ ul.donors{list-style:none;padding:0;margin:0}
 .by-blood th,.by-blood td{padding:6px 16px;border-bottom:1px solid #ddd}
 .empty{color:#444}
 .error-page{text-align:center;padding:64px 16px}
+.error-page .codigo{font-weight:normal}
 section.form[hidden]{display:none}
 @media (max-width:520px){main .donors{grid-template-columns:1fr 1fr}}
 .requisitos{margin:0 auto 30px;width:90%;max-width:500px}

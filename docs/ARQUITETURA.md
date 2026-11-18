@@ -10,7 +10,7 @@ flowchart LR
 
 | Contêiner | Tecnologia | Responsabilidade |
 |---|---|---|
-| Web | Node 22, Express 4, Nunjucks | Página, validação, consentimento, "Quem pode doar" |
+| Web | Node 22, Express 5, Nunjucks | Página, validação, consentimento, "Quem pode doar" |
 | Banco | PostgreSQL 16 | Doadores |
 | Hospedagem | Render Web Service (gratuito) + Neon (gratuito) | Execução e dados |
 

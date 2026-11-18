@@ -97,7 +97,8 @@ test("o mesmo e-mail, com maiúsculas, não duplica o cadastro", async ({ page }
 test("endereço inexistente mostra a página 404 própria", async ({ page }) => {
   const resposta = await page.goto("/nao-existe");
   expect(resposta.status()).toBe(404);
-  await expect(page.getByRole("heading", { name: "404" })).toBeVisible();
+  await expect(page.getByRole("heading", { level: 1, name: "Página não encontrada (404)" })).toBeVisible();
+  await expect(page).toHaveTitle(/^Página não encontrada \(404\)/);
   await expect(page.getByRole("link", { name: "Voltar ao início" })).toBeVisible();
   await semViolacoes(page);
 });

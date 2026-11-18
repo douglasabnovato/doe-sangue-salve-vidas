@@ -28,6 +28,15 @@ test("banco indisponível responde 503 com página amigável", async () => {
   const broken = createApp({ donors: { latest: async () => { throw new Error("down"); }, countByBlood: async () => [] } });
   const res = await request(broken).get("/").expect(503);
   assert.match(res.text, /indisponível/);
+  assert.match(res.text, /<h1>Cadastro indisponível <span class="codigo">\(503\)<\/span><\/h1>/);
+  assert.match(res.text, /<title>Cadastro indisponível \(503\) - /);
+});
+
+test("página 404 tem título em texto, além do código", async () => {
+  const demo = createApp({ donors: createMemoryDonorRepository() });
+  const res = await request(demo).get("/nao-existe").expect(404);
+  assert.match(res.text, /<h1>Página não encontrada <span class="codigo">\(404\)<\/span><\/h1>/);
+  assert.match(res.text, /<title>Página não encontrada \(404\) - /);
 });
 
 test("modo demonstração (memória): lista vazia, cadastro, nome minimizado e sem duplicar e-mail", async () => {
@@ -68,6 +77,8 @@ test("excesso de envios responde 429 com página em português", async () => {
   const res = await request(demo).post("/").type("form").send(body).expect(429);
   assert.match(res.text, /muitos cadastros em pouco tempo/);
   assert.doesNotMatch(res.text, /Too many requests/i);
+  assert.match(res.text, /<h1>Muitos envios <span class="codigo">\(429\)<\/span><\/h1>/);
+  assert.match(res.text, /<title>Muitos envios \(429\) - /);
 });
 
 describeDb();
