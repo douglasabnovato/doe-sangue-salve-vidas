@@ -37,6 +37,7 @@ function createApp({ donors, trustProxy = false }) {
     handler: (req, res) =>
       res.status(429).render("error.html", {
         status: 429,
+        title: "Muitos envios",
         message: "Você enviou muitos cadastros em pouco tempo. Aguarde um minuto e tente de novo.",
       }),
   });
@@ -76,13 +77,20 @@ function createApp({ donors, trustProxy = false }) {
     }
   });
 
-  app.use((req, res) => res.status(404).render("error.html", { status: 404, message: "Página não encontrada." }));
+  app.use((req, res) =>
+    res.status(404).render("error.html", {
+      status: 404,
+      title: "Página não encontrada",
+      message: "O endereço que você abriu não existe neste site.",
+    })
+  );
 
   app.use((err, req, res, next) => {
     console.error(err);
     if (res.headersSent) return next(err);
     return res.status(503).render("error.html", {
       status: 503,
+      title: "Cadastro indisponível",
       message: "O cadastro está indisponível no momento. Tente novamente em alguns minutos.",
     });
   });
